@@ -1,0 +1,23 @@
+{
+  "name": "frontend-example",
+  "version": "1.0.0",
+  "description": "Simple app for a docker tutorial",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarianiGiacomo/frontend-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarianiGiacomo/frontend-example/issues"
+  },
+  "homepage": "https://github.com/MarianiGiacomo/frontend-example#readme",
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}
