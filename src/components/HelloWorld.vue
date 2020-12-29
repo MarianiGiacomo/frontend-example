@@ -3,6 +3,8 @@
     <h1>{{ msg }}</h1>
     <button id="backend-button" type="button" name="button">Hello Backend</button>
     <p id="backend-message"></p>
+    <button id="service-button" type="button" name="button">Hello Service from Backend</button>
+    <p id="service-message"></p>
   </div>
 </template>
 
@@ -20,6 +22,15 @@ window.addEventListener('load', () => {
     const response = await fetch(process.env.VUE_APP_BACKEND);
     const backendMsg = await response.text();
     document.getElementById('backend-message').innerText = backendMsg;
+  });
+});
+
+window.addEventListener('load', () => {
+  document.getElementById('service-button').addEventListener('click', async (event) => {
+    event.preventDefault();
+    const response = await fetch(`${process.env.VUE_APP_BACKEND}/service`);
+    const backendMsg = await response.text();
+    document.getElementById('service-message').innerText = backendMsg;
   });
 });
 
