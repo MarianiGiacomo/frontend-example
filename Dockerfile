@@ -9,8 +9,16 @@ COPY . .
 RUN apk add --update --no-cache npm && \
     npm install && \
     export VUE_APP_BACKEND=$backend_api_url && \
-    printenv && \
     npm run build && \
+    adduser -D app
+
+FROM alpine:3.8
+
+WORKDIR /app
+
+COPY --from=build-stage /app/dist /app/dist
+
+RUN apk add --update --no-cache npm && \
     npm install -g serve && \
     adduser -D app
 
