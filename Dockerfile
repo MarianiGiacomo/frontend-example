@@ -1,6 +1,8 @@
 FROM alpine:3.8 as build-stage
+LABEL stage=builder
 
-ARG backend_api_url
+ARG backend_url
+ARG service_api_path
 
 WORKDIR /app
 
@@ -8,7 +10,8 @@ COPY . .
 
 RUN apk add --update --no-cache npm && \
     npm install && \
-    export VUE_APP_BACKEND=$backend_api_url && \
+    export VUE_APP_BACKEND=$backend_url && \
+    export VUE_APP_SERVICE_API_PATH=$service_api_path && \
     npm run build && \
     adduser -D app
 

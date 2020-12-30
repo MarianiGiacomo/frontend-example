@@ -16,10 +16,13 @@ export default {
   }
 }
 
+const backend_url = process.env.VUE_APP_BACKEND;
+const service_api_path = process.env.VUE_APP_SERVICE_API_PATH;
+
 window.addEventListener('load', () => {
   document.getElementById('backend-button').addEventListener('click', async (event) => {
     event.preventDefault();
-    const response = await fetch(process.env.VUE_APP_BACKEND);
+    const response = await fetch(backend_url);
     const backendMsg = await response.text();
     document.getElementById('backend-message').innerText = backendMsg;
   });
@@ -28,7 +31,7 @@ window.addEventListener('load', () => {
 window.addEventListener('load', () => {
   document.getElementById('service-button').addEventListener('click', async (event) => {
     event.preventDefault();
-    const response = await fetch(`${process.env.VUE_APP_BACKEND}/service`);
+    const response = await fetch(`${backend_url}/${service_api_path}`);
     const backendMsg = await response.text();
     document.getElementById('service-message').innerText = backendMsg;
   });
